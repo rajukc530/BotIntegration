@@ -93,7 +93,7 @@ public class CallbackHandler {
 
 		logger.debug("Received Messenger Platform callback - payload: {} | signature: {}", payload, signature);
 		try {
-			System.out.println("payload:"+payload);
+		   System.out.println("payload:"+payload);
 			System.out.println("INSIDE TRY:"+signature);
 			this.receiveClient.processCallbackPayload(payload, signature);
 			logger.debug("Processed callback payload successfully");
@@ -153,7 +153,13 @@ public class CallbackHandler {
 		final String metadata = "DEVELOPER_DEFINED_METADATA";
 
 		try {
-			this.sendClient.sendTextMessage(recipient, notificationType, text, metadata);
+		  if(recipientId.equals("206469290133580")) {
+		        final MessengerSendClient sendClientSecond = MessengerPlatform.newSendClientBuilder("EAAaISLtfMnUBABFUpJWbTqNvVnP7A6ZAVJtZCxtWIkvbLoIsNmmxrvGONYZB2cqQTm18dzAlYZBb9INcrFAO5tpo7aqA5kuPcolP2vInLtgdU5w7CsrDBNps3o585exZBhvptzHWMmK3R81q0qmM1lwvQRhISwpLBFZBCF5UyANAZDZD").build();
+		  
+			sendClientSecond.sendTextMessage(recipient, notificationType, text, metadata);
+		  }else {
+		    this.sendClient.sendTextMessage(recipient, notificationType, text, metadata);
+		  }
 		} catch (MessengerApiException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
