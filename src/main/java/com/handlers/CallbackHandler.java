@@ -93,7 +93,8 @@ public class CallbackHandler {
 
 		logger.debug("Received Messenger Platform callback - payload: {} | signature: {}", payload, signature);
 		try {
-			System.out.println("INSIDE TRY");
+			System.out.println("payload:"+payload);
+			System.out.println("INSIDE TRY:"+signature);
 			this.receiveClient.processCallbackPayload(payload, signature);
 			logger.debug("Processed callback payload successfully");
 			return ResponseEntity.status(HttpStatus.OK).build();
