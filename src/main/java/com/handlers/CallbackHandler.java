@@ -114,18 +114,19 @@ public class CallbackHandler {
 			final String messageText = event.getText();
 			final String senderId = event.getSender().getId();
 			final Date timestamp = event.getTimestamp();
+			final String receipientId = event.getRecipient().getId();
 
-			logger.info("Received message '{}' with text '{}' from user '{}' at '{}'", messageId, messageText, senderId,
-					timestamp);
+			logger.info("Received message '{}' with text '{}' from user '{}' at '{}' to '{}'", messageId, messageText, senderId,
+					timestamp, receipientId);
 
 			switch (messageText.toLowerCase()) {
 
 			case "hello":
-				sendTextMessage(senderId, "Hello, What I can do for you ? Type the word you're looking for");
+				sendTextMessage(senderId,receipientId, "Hello, What I can do for you ? Type the word you're looking for");
 				break;
 
 			case "user":
-			sendTextMessage(senderId, "Okay, Make appropriate selection Below.....");
+			sendTextMessage(senderId,receipientId, "Okay, Make appropriate selection Below.....");
 			
 				try {
 					sendQuickReply(senderId);
@@ -138,7 +139,7 @@ public class CallbackHandler {
 			
 
 			default:
-				sendTextMessage(senderId, "I do not know what are you talking about");
+				sendTextMessage(senderId,receipientId, "I do not know what are you talking about");
 			}
 
 		};
@@ -146,7 +147,7 @@ public class CallbackHandler {
 	
 		
 
-		private void sendTextMessage(String recipientId, String text) {
+		private void sendTextMessage(String senderId, String recipientId, String text) {
 
 		final Recipient recipient = Recipient.newBuilder().recipientId(recipientId).build();
 		final NotificationType notificationType = NotificationType.REGULAR;
@@ -154,10 +155,10 @@ public class CallbackHandler {
 
 		try {
 		  System.out.println("recipientId:"+recipientId+":::"+text);
-		  if(text.contains("I do not know what are you talking about")) {
-		        final MessengerSendClient sendClientSecond = MessengerPlatform.newSendClientBuilder("EAAaISLtfMnUBABFUpJWbTqNvVnP7A6ZAVJtZCxtWIkvbLoIsNmmxrvGONYZB2cqQTm18dzAlYZBb9INcrFAO5tpo7aqA5kuPcolP2vInLtgdU5w7CsrDBNps3o585exZBhvptzHWMmK3R81q0qmM1lwvQRhISwpLBFZBCF5UyANAZDZD").build();
 		  
-			sendClientSecond.sendTextMessage(recipient, notificationType, text, metadata);
+		  if(senderId.contains("206469290133580")) {
+		        final MessengerSendClient sendClientSecond = MessengerPlatform.newSendClientBuilder("EAAaISLtfMnUBABFUpJWbTqNvVnP7A6ZAVJtZCxtWIkvbLoIsNmmxrvGONYZB2cqQTm18dzAlYZBb9INcrFAO5tpo7aqA5kuPcolP2vInLtgdU5w7CsrDBNps3o585exZBhvptzHWMmK3R81q0qmM1lwvQRhISwpLBFZBCF5UyANAZDZD").build();
+		        sendClientSecond.sendTextMessage(recipient, notificationType, text, metadata);
 		  }else {
 		    this.sendClient.sendTextMessage(recipient, notificationType, text, metadata);
 		  }
@@ -192,7 +193,7 @@ public class CallbackHandler {
 
 	                    if(quickReplyPayload.equals(GOOD_ACTION)) {
 	                    String name;
-                       	sendTextMessage(senderId,"USER NAME IS :- " +"AMIT BILLORE");
+                       	sendTextMessage(senderId,"","USER NAME IS :- " +"AMIT BILLORE");
                        	System.out.println("NAME ON CONSOLE :- "+"AMIT BILLORE");
 	                    	}
 	                    else {
@@ -208,7 +209,7 @@ public class CallbackHandler {
 							e.printStackTrace();
 						}
 	                    }
-	                    sendTextMessage(senderId, "THANKS FOR SELECTING");
+	                    sendTextMessage(senderId,"", "THANKS FOR SELECTING");
 
 			};	
 		}
