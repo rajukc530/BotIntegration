@@ -1,7 +1,7 @@
 messenger4j:
-  appSecret: 2e7aefe359ff98041210f9d9a952ebc3
+  appSecret: 6a17b6f4d5f2d1f98d9ac4ea3decb31c
   verifyToken: AB
-  pageAccessToken: EAAVCJ261axgBAOdWW0eW5pO0uiru6WafnS6axvjUHOZAziPklVktJ6FV2sXPGOrW1cVvZBe7w3wBtlmWFSZA3FHZBWcOg6X2KP8jiUwESiVSf769glZBYclPkK69Lhx3cHS0WXZB9VXPEZAr7DQ8KLKmgrIXIBIq6YZCrPxHlDONnwZDZD
+  pageAccessToken: EAAaISLtfMnUBAJeBe7TBv6rpKSjOZB73IApEOkLSZADyHpV5Ad9iKRHFmwwKbU0ooR1iZCqtdy2YATntnZCQDTZA3gEcYo53wyadgw0BvtE880JtUEgJvjlCHfJpaTzOf0voMRlaB2CsA0efcpxcY4oSpzZAAsmQgmKZAgxAs1jZBgZDZD
 logging:
   level:
     com:
