@@ -147,23 +147,23 @@ public class CallbackHandler {
 	
 		
 
-		private void sendTextMessage(String senderId, String recipientId, String text) {
+		private void sendTextMessage( String recipientId,String senderId, String text) {
 
 		final Recipient recipient = Recipient.newBuilder().recipientId(recipientId).build();
 		final NotificationType notificationType = NotificationType.REGULAR;
 		final String metadata = "DEVELOPER_DEFINED_METADATA";
 
 		try {
-		  System.out.println("recipientId:"+recipientId+":::"+text);
+		  System.out.println("recipientId:"+recipientId+":::"+senderId);
 		  
-		 /* if(!recipientId.equals("206469290133580")) {
+		  if(senderId.equals("206469290133580")) {
 		    System.out.println("yes");
 		        final MessengerSendClient sendClientSecond = MessengerPlatform.newSendClientBuilder("EAAaISLtfMnUBABFUpJWbTqNvVnP7A6ZAVJtZCxtWIkvbLoIsNmmxrvGONYZB2cqQTm18dzAlYZBb9INcrFAO5tpo7aqA5kuPcolP2vInLtgdU5w7CsrDBNps3o585exZBhvptzHWMmK3R81q0qmM1lwvQRhISwpLBFZBCF5UyANAZDZD").build();
 		        sendClientSecond.sendTextMessage(recipient, notificationType, text, metadata);
-		  }else {*/
+		  }else {
 		    System.out.println("no");
 		    this.sendClient.sendTextMessage(recipient, notificationType, text, metadata);
-		  //}
+		  }
 		} catch (MessengerApiException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
